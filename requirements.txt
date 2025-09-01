@@ -1,0 +1,5 @@
+Flask==2.3.3
+pymongo==4.6.1
+google-auth==2.22.0
+google-auth-oauthlib==1.1.0
+gunicorn==21.2.0

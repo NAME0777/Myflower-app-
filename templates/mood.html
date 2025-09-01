@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood-Daily</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/mood.css')}}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('quiz') }}">Quiz</a>
+        <a href="{{ url_for('mood') }}">Mood</a>
+      </nav>
+    </header>
+    <main>
+      <div id="currentMonth">July</div>
+    </main>
+  </body>
+</html>

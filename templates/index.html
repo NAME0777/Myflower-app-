@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloomie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Bloomie</h1>
+    </header>
+    <main>
+        <section>
+            <p>
+                "Discover the flower that mirrors your soul."
+            </p>
+            <p>
+                The flower you choose is a gentle reflection of your heart’s emotions today
+            </p>
+        </section>
+        <section id="form-container">
+            <form id="login-form">
+                <div>
+                    <label>
+                        <input type="text" name="email" placeholder="youremail@gmail.com" class="input-box">
+                    </label>
+                </div>
+                <div>
+                    <button type="submit" class="btn">Continue</button>
+                </div>
+                <div>
+                    Don't have an account?
+                    <button type="button" onclick="showSignup()">Sign Up</button>
+                </div>
+            </form>
+
+            <form id="signup-form" style="display:none;">
+                <div>
+                    <label>
+                        <input type="text" name="email" placeholder="youremail@gmail.com" class="input-box">
+                    </label>
+                </div>
+                <div>
+                    <div>
+    <a href="{{ url_for('login') }}">
+        <button type="button" class="btn">Sign Up with Google</button>
+    </a>
+</div>
+
+                </div>
+                <div>
+                    Already have an account?
+                    <button type="button" onclick="showLogin()">Login</button>
+                </div>
+            </form>
+        </section>
+
+        <script>
+            function showSignup() {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('signup-form').style.display = 'block';
+            }
+
+            function showLogin() {
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('signup-form').style.display = 'none';
+            }
+
+            // ตรวจจับ submit ของ login-form
+            document.getElementById("login-form").addEventListener("submit", function (e) {
+                e.preventDefault(); // ป้องกันไม่ให้ reload หน้า
+
+                const email = this.email.value;
+                if (email) {
+                    // เปลี่ยนหน้า
+                    window.location.href = "home.html";
+                } else {
+                    alert("Please enter your email.");
+                }
+            });
+
+            // ตรวจจับ submit ของ signup-form
+            document.getElementById("signup-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const email = this.email.value;
+                if (email) {
+                    // เปลี่ยนหน้า
+                    window.location.href = "signup-success.html"; // หรือจะไปหน้าเดียวกับ login ก็ได้
+                } else {
+                    alert("Please enter your email.");
+                }
+            });
+        </script>
+
+
+    </main>
+</body>
+
+</html>

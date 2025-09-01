@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('quiz') }}">Quiz</a>
+        <a href="{{ url_for('mood') }}">Mood</a>
+        <a href="{{ url_for('loginWeb') }}">Log in</a>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <img src="{{ url_for('static', filename='img/sunflower.png') }}" class="flower_pic" alt="Sunflower">
+        <img src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s96-fcrop64=1,00000000ffffffff-rw" class="logo" alt="google_logo">
+      </div>
+    </main>
+  </body>
+</html>

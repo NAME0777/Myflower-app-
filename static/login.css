@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    font-family: "Just Me Again Down Here", cursive;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F0C129;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    text-align: center;
+}
+
+h1 {
+    font-size: 250px;
+    font-weight: 400;
+    line-height: 0.8;
+    margin: 0;
+    padding-top: 40px;
+}
+
+p {
+    font-size: 48px;
+    margin: 0;
+}
+
+form {
+    padding-top: 30px;
+    font-size: 48px;
+}
+
+.input-box {
+    background: #ddd;
+    border-radius: 25px;
+    padding: 20px;
+    width: 80%;
+    outline: none;
+    font-size: 48px;
+}
+
+div {
+    padding-bottom: 20px;
+}
+
+.btn {
+    background: #000000;
+    border-radius: 25px;
+    padding: 12px;
+    width: 80%;
+    outline: none;
+    font-size: 48px;
+    color: white;
+}

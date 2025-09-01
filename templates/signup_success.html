@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup_success.css') }}">
+</head>
+
+<body>
+    <form id="signup">
+        <label>
+            Enter Username
+            <div>
+                <input class="input-box" type="text" name="username" placeholder="your username"  required>
+            </div>
+        </label>
+
+
+        <label>
+            Enter your birthday
+            <div>
+                <input class="input-box" type="date" name="bday" max="2010-12-31" required>
+            </div>
+        </label>
+
+
+        <div>
+            <button type="submit" class="btn">Continue</button>
+        </div>
+    </form>
+
+    <script>document.getElementById('signup').addEventListener("submit", function (e) {
+            e.preventDefault();
+            const username = this.username.value;
+            if (username) {
+                // เปลี่ยนหน้า
+                window.location.href = "{{ url_for('home') }}";
+            } else {
+                alert("Please enter your Username.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

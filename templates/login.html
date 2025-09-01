@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloomie</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1>Bloomie</h1>
+    </header>
+
+    <main>
+      <section>
+        <p>"Discover the flower that mirrors your soul."</p>
+        <p>
+          The flower you choose is a gentle reflection of your heart’s emotions
+          today
+        </p>
+      </section>
+
+      <section id="form-container">
+        <!-- Login Form -->
+        <form id="login-form">
+          <div>
+            <label>
+              <input
+                class="input-box"
+                type="email"
+                name="email"
+                placeholder="youremail@gmail.com"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <a href="{{ url_for('login') }}" class="google-btn">
+              <img
+                src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s96-fcrop64=1,00000000ffffffff-rw"
+              />
+              Sign in with Google
+            </a>
+          </div>
+
+          <div>
+            <button class="submit" type="submit">Continue</button>
+          </div>
+
+          <div>
+            Don't have an account?
+            <span class="btn" onclick="showSignup()"> Sign up </span>
+          </div>
+
+          <dialog id="google-auth">
+            <h2>Sign in</h2>
+            <div>
+              <a href="{{ url_for('login') }}" class="google-btn">
+                <img
+                  src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s96-fcrop64=1,00000000ffffffff-rw"
+                />
+                Sign in with Google
+              </a>
+            </div>
+            <button id="closeDialog">Close</button>
+          </dialog>
+          <button id="openDialog">Sign in</button>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" style="display: none">
+          <div>
+            <label>
+              <input
+                class="input-box"
+                type="email"
+                name="email"
+                placeholder="youremail@gmail.com"
+                required
+              />
+            </label>
+          </div>
+
+          <div>
+            <a href="{{ url_for('login') }}" class="google-btn">
+              <img
+                src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s96-fcrop64=1,00000000ffffffff-rw"
+              />
+              Sign up with Google
+            </a>
+          </div>
+
+          <div>
+            <button class="submit" type="submit">Continue</button>
+          </div>
+
+          <div>
+            Already have an account?
+            <span class="btn" onclick="showLogin()"> Sign in </span>
+          </div>
+          <dialog id="google-auth">
+            <h2>Sign in</h2>
+            <div>
+              <a href="{{ url_for('login') }}" class="google-btn">
+                <img
+                  src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s96-fcrop64=1,00000000ffffffff-rw"
+                />
+                Sign in with Google
+              </a>
+            </div>
+
+            <button id="closeDialog">Close</button>
+          </dialog>
+          <button id="openDialog">Sign up</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Script -->
+    <script>
+      document
+        .getElementById("openDialog")
+        .addEventListener("click", function () {
+          document.getElementById("google-auth").showModal(); // showModal() for modal dialogs
+        });
+
+      document
+        .getElementById("closeDialog")
+        .addEventListener("click", function () {
+          document.getElementById("google-auth").close();
+        });
+
+      function showSignup() {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("signup-form").style.display = "block";
+      }
+
+      function showLogin() {
+        document.getElementById("login-form").style.display = "block";
+        document.getElementById("signup-form").style.display = "none";
+      }
+
+      // ตรวจจับ submit ของ login-form
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // ป้องกันไม่ให้ reload หน้า
+
+          const email = this.email.value;
+          if (email) {
+            window.location.href = "{{ url_for('home') }}";
+          } else {
+            alert("Please enter your email.");
+          }
+        });
+
+      // ตรวจจับ submit ของ signup-form
+      document
+        .getElementById("signup-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = this.email.value;
+          if (email) {
+            window.location.href = "{{ url_for('signup_success') }}";
+          } else {
+            alert("Please enter your email.");
+          }
+        });
+    </script>
+  </body>
+</html>
